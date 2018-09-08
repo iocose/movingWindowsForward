@@ -70,6 +70,7 @@
 		65E3959FF1F849DAE3BCC008 /* ofxAutoReloadedShader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = ofxAutoReloadedShader.cpp; path = ../../../addons/ofxAutoReloadedShader/src/ofxAutoReloadedShader.cpp; sourceTree = SOURCE_ROOT; };
 		6A0E743407465957DB764ED3 /* mesh.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = mesh.h; path = ../../../addons/ofxAssimpModelLoader/libs/assimp/include/assimp/mesh.h; sourceTree = SOURCE_ROOT; };
 		6E069CE4C58E970E3429DBE5 /* Importer.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = Importer.hpp; path = ../../../addons/ofxAssimpModelLoader/libs/assimp/include/assimp/Importer.hpp; sourceTree = SOURCE_ROOT; };
+		6F08187B2143DCD500042B03 /* rgb-waves-frag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "rgb-waves-frag.glsl"; sourceTree = "<group>"; };
 		6F77B458213F1AE9003FB2C1 /* normals-frag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "normals-frag.glsl"; sourceTree = "<group>"; };
 		6F8E34D9213AEE2500AFE0D1 /* frag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frag.glsl; sourceTree = "<group>"; };
 		6F8E34DB213AEE2500AFE0D1 /* vert.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vert.glsl; sourceTree = "<group>"; };
@@ -233,6 +234,7 @@
 				6F8E34D9213AEE2500AFE0D1 /* frag.glsl */,
 				6F8E34DB213AEE2500AFE0D1 /* vert.glsl */,
 				6F77B458213F1AE9003FB2C1 /* normals-frag.glsl */,
+				6F08187B2143DCD500042B03 /* rgb-waves-frag.glsl */,
 			);
 			name = shaders;
 			path = bin/data/shaders;

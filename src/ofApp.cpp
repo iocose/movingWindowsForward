@@ -8,6 +8,7 @@ void ofApp::setup(){
     light.setPosition(600, 600, 600);
 
     model.loadModel("finger.obj");
+    bgImg.load("sol.JPG");
 
     //ofMesh mesh = model.getMesh(0);
     // scale
@@ -22,7 +23,7 @@ void ofApp::setup(){
     //ofEnableDepthTest();
     fbo.allocate(ofGetScreenWidth(), ofGetScreenHeight(), GL_RGBA, ofFbo::maxSamples());
 
-    shader.load("shaders/vert.glsl", "shaders/frag.glsl", "");
+    shader.load("shaders/vert.glsl", "shaders/rgb-waves-frag.glsl", "");
     light.enable();
 }
 
@@ -37,10 +38,10 @@ ofTexture ofApp::getTexture() const {
 
 void ofApp::zoom(ofKeyEventArgs & args){
     if(args.key == 'z'){
-        zoomLevel += 0.004;
+        zoomLevel += 0.01;
     }
     if(args.key == 'x'){
-        zoomLevel -= 0.004;
+        zoomLevel -= 0.01;
     }
 
 };
@@ -52,6 +53,7 @@ void ofApp::draw(){
 
     fbo.begin();
     ofClear(0,0,0,0);
+    bgImg.draw(0,0);
     ofEnableDepthTest();
 
     camera.begin();

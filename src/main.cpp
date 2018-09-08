@@ -2,8 +2,8 @@
 #include "ofApp.h"
 #include "ofWindow.h"
 
-const int N_WINDOWS = 40;
-bool debug = true;
+const int N_WINDOWS = 20;
+bool debug = false;
 
 int main( ){
     // main window, where the 3d scene is drawn
@@ -25,10 +25,10 @@ int main( ){
         settings.resizable = false;
         settings.visible = true;
 
-//        int winWidth = 700;
-//        int winHeight = 400;
-        int winWidth = 300;
-        int winHeight = 200;
+        int winWidth = 700;
+        int winHeight = 400;
+//        int winWidth = 300;
+//        int winHeight = 200;
         for (int i = 0; i< N_WINDOWS; i++) {
             //settings.setSize(100, 200);
             settings.setSize(ofRandom(winWidth-100,winWidth),

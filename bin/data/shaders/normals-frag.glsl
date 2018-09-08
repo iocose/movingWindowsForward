@@ -2,11 +2,11 @@
 in vec3 vecNormal;
 
 out vec4 fragColor;
-uniform float uTime;
+uniform float iGlobalTime;
 
 void main(){
     vec4 materialColor = vec4(1.0,0.,0.,1.0);
-    vec3 light = vec3(0.9, sin(uTime) * 0.6, 1.0);
+    vec3 light = vec3(0.9, sin(iGlobalTime) * 0.6, 1.0);
     light = normalize(light);
 
     // dot product
