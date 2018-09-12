@@ -10,7 +10,7 @@ public:
     void setup();
     void update();
     void draw();
-    void zoom(ofKeyEventArgs & args);
+    void evt(ofKeyEventArgs & args);
 
     void keyPressed(int key);
     void keyReleased(int key);
@@ -33,6 +33,8 @@ public:
     of3dPrimitive primitive;
 
     float zoomLevel = 0.1;
+    bool rotate = false;
     ofFbo fbo;
+    ofTexture prev;
     ofImage bgImg;
 };

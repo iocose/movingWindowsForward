@@ -2,7 +2,7 @@
 #include "ofApp.h"
 #include "ofWindow.h"
 
-const int N_WINDOWS = 20;
+const int N_WINDOWS = 30;
 bool debug = false;
 
 int main( ){
@@ -25,10 +25,10 @@ int main( ){
         settings.resizable = false;
         settings.visible = true;
 
-        int winWidth = 700;
-        int winHeight = 400;
-//        int winWidth = 300;
-//        int winHeight = 200;
+//        int winWidth = 700;
+//        int winHeight = 400;
+        int winWidth = 300;
+        int winHeight = 200;
         for (int i = 0; i< N_WINDOWS; i++) {
             //settings.setSize(100, 200);
             settings.setSize(ofRandom(winWidth-100,winWidth),
@@ -39,7 +39,7 @@ int main( ){
             auto windowFrame = ofCreateWindow(settings);
             auto windowApp = make_shared<ofWindow>(x,y, mainApp->getTexture(), 2.0);
 
-            ofAddListener(windowFrame->events().keyPressed,mainApp.get(),&ofApp::zoom);
+            ofAddListener(windowFrame->events().keyPressed,mainApp.get(),&ofApp::evt);
 
             ofRunApp(windowFrame, windowApp);
         }

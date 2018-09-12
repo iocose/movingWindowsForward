@@ -7,7 +7,7 @@ uniform vec2 iResolution;
 
 const int MAX_MARCHING_STEPS = 64;
 const float EPSILON = 0.0011;
-const float NEAR_CLIP = 0.0;
+const float NEAR_CLIP = 10.0;
 const float FAR_CLIP = 100.00;
 const float PI = 3.14159265358979323846;
 
@@ -75,16 +75,16 @@ float frame(vec3 pos, float side, float thik, float z){
 }
 
 float map(vec3 pos){
-    vec2 uv = squareFrame(iResolution.xy, gl_FragCoord.xy);
-    pos.x+= (iGlobalTime*4.)*1.5;
+
+    pos.x+= (iGlobalTime*1.)*1.5;
     float grid = 18.0;
     float fr = 3.0;
     float sinTimeA = sin(iGlobalTime*fr)* 0.5;
     float sinTimeB = sin(iGlobalTime*fr+0.3)* 0.5;
     float sinTimeC = sin(iGlobalTime*fr+0.6)* 0.5;
     float sinTimeD = sin(iGlobalTime*fr+0.9)* 0.5;
-    //pMod2(pos.xy, vec2(grid));
-    pMod3(pos, vec3(grid, grid, 28.));
+    pMod2(pos.xy, vec2(grid));
+    //pMod3(pos, vec3(grid, grid, 28.));
 
 
     vec3 pA = pos;
@@ -93,7 +93,7 @@ float map(vec3 pos){
     vec3 pD = pos;
 
     pA.xz = rotate(pos.xz, sinTimeA);
-    //pA.z += 0.5;
+    pA.z += 0.5;
     pB.xz = rotate(pos.xz, sinTimeB);
     pB.z += .2;
     pC.xz = rotate(pos.xz, sinTimeC);
@@ -176,8 +176,8 @@ vec3 getRefTexture(vec3 normal, vec3 dir) {
 
     vec4 color;
     //color = texture2D(iChannel1, (0.5 * (r.xy) + .5));
-    //return vec3(1.0, 0.375,0.2);
-    return vec3(0.9, 0.9,0.9);
+    return vec3(1.0, 0.375,0.2);
+    //return vec3(0.9, 0.9,0.9);
 }
 
 vec3 calculateColor(vec3 pos, vec3 dir){
@@ -211,7 +211,7 @@ vec3 calculateColor2(vec3 pos, vec3 dir){
 
 void main(){
     vec2 uv = squareFrame(iResolution.xy, gl_FragCoord.xy);
-    vec3 eye = vec3(0.0, 0.0,22.5);
+    vec3 eye = vec3(0.0, 0.0,18.5);
     //pMod2(eye.xy, vec2(7.0, 7.0));
 
     vec3 ta = vec3( -0.0, 0.0, 0.0 );

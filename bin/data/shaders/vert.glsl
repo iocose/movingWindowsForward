@@ -26,5 +26,18 @@ void main(){
                    vec4(0., 1., 0., 0.),
                    vec4(0., 0., iZoomLevel, 0.),
                    vec4(0., 0., 0., 1.)) * modelViewMatrix;
-    gl_Position = projectionMatrix * mv * position;
+
+
+    vec4 projPos = projectionMatrix * mv * position;
+    float displacementHeight = 100.0;
+    float displacementY = sin(iGlobalTime + (position.x / 100.0)) * displacementHeight;
+    //projPos.y += displacementY;
+
+    // - sined pos
+    //projPos += sin(projPos * (iGlobalTime*0.01)) * 0.2;
+
+    //- fract pos
+    //projPos.y += (fract(projPos.y) * 20.9);
+
+    gl_Position = projPos;
 }

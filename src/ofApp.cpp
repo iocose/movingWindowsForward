@@ -2,16 +2,11 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    light.setup();
-    light.setAmbientColor(ofFloatColor::white);
-    light.setPointLight();
-    light.setPosition(600, 600, 600);
+    ofDisableArbTex();
 
     model.loadModel("finger.obj");
-    bgImg.load("sol.JPG");
+    bgImg.load("sol3.JPG");
 
-    //ofMesh mesh = model.getMesh(0);
-    // scale
     primitive.getMesh().append(model.getMesh(0));
     primitive.getMesh().enableNormals();
     float size = 160;
@@ -20,15 +15,19 @@ void ofApp::setup(){
     primitive.setPosition(130, 40, 0);
 
 
-    //ofEnableDepthTest();
     fbo.allocate(ofGetScreenWidth(), ofGetScreenHeight(), GL_RGBA, ofFbo::maxSamples());
+    prev.allocate(ofGetScreenWidth(), ofGetScreenHeight(), GL_RGBA);
 
-    shader.load("shaders/vert.glsl", "shaders/rgb-waves-frag.glsl", "");
+    shader.load("shaders/vert.glsl", "shaders/roma.glsl", "");
     light.enable();
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    if(rotate){
+        primitive.rotateRad(0.005, glm::vec3(1.0,0.0,0.0));
+    }
 
 }
 
@@ -36,12 +35,15 @@ ofTexture ofApp::getTexture() const {
     return fbo.getTexture();
 }
 
-void ofApp::zoom(ofKeyEventArgs & args){
+void ofApp::evt(ofKeyEventArgs & args){
     if(args.key == 'z'){
         zoomLevel += 0.01;
     }
     if(args.key == 'x'){
         zoomLevel -= 0.01;
+    }
+    if(args.key == 'r'){
+        rotate = !rotate;
     }
 
 };
@@ -50,22 +52,19 @@ void ofApp::zoom(ofKeyEventArgs & args){
 void ofApp::draw(){
     ofDrawBitmapString("Main Window", 20, 20);
 
-
+    prev = fbo.getTexture();
     fbo.begin();
     ofClear(0,0,0,0);
     bgImg.draw(0,0);
     ofEnableDepthTest();
 
     camera.begin();
-        //ofLog() << camera.getModelViewMatrix();
     shader.begin();
     shader.setUniform1f("iGlobalTime", ofGetElapsedTimef());
     shader.setUniform1f("iZoomLevel", zoomLevel);
     shader.setUniform2f("iResolution", ofGetWidth(), ofGetHeight());
-    light.draw();
-
+    shader.setUniformTexture("tex0", prev, 0);
     primitive.draw();
-
     shader.end();
     camera.end();
 
