@@ -134,15 +134,5 @@ void main(){
 
 #endif
 
-#if SET==3
-
-
-    vec3 oldCol = col;
-    col = 
-
-    col+=oldCol*0.7;
-
-#endif
-
     fragColor = vec4(col, 1.0);
 }
