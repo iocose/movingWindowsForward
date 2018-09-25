@@ -47,12 +47,24 @@ float plot(float val, float c, float t){
     return r-l;
 }
 
+vec3 addLight(vec3 pos, vec3 dir, vec3 nor, vec3 col, vec3 lig){
+    float NL = max(dot(nor, lig),0.);
+    float NV = max(dot(nor, -dir),0.);
+    NV =  pow(1.-NV, 2.);
+
+    float bli =  max(dot(normalize(lig+-dir), nor), 0.);
+    bli = pow(bli, 80.);
+
+    float c = NL + NV * 0.5 + bli;
+    return vec3(c) * col;
+}
+
 
 void main(){
     //general variables
     vec3 vPos = vecPos.xyz;
     float r, g, b;
-    vec3 lightPos = vec3(0.0, 1.0, 9.1);
+    vec3 lightPos = vec3(0.0, 1.0, 5.1);
     float offset = 0.4;
     float t = iGlobalTime * 0.5; // 4. set 1
     vec3 col = vec3(0);
@@ -88,25 +100,49 @@ void main(){
 #endif
 
 #if SET==2
-    //st = vectorField(st);
+    st = vectorField(st);
+    // LAST
     st = vectorField(vPos.xy);
 
-    float cell = 0.2;
+    float cell = 0.99;
+    //cell = 0.28;
     vec2 modSt = mod(st, vec2(cell));
 
     float x = plot(modSt.x, cell, 0.3);
     float y = plot(modSt.y, cell, 0.2);
 
-    col = vec3(0.9,0.0,0.0) * x;
-    col += vec3(0.,9.,.0) * y;
+    col = vec3(0.8,0.0,0.0) * x;
+    col += vec3(0.,8.,.0) * y;
     vec3 bgCol = vec3(0.,0.,1.);
 
-    col+= bgCol*vec3(smoothstep(0.9, .01,x+y));
+    col+= bgCol*vec3(smoothstep(0.01, .001,x+y));
+
+    // Add lights
+
+    //2
+    //lightPos = vec3(0.0, 1.0, sin(iGlobalTime)* 2.1);
+    //lightPos = vec3(sin(iGlobalTime), 1.0, cos(iGlobalTime));
+
+    // 1
+    //vec3 gray = vec3(0.2);
+    //vec3 grayScale = addLight(vPos, vec3(0.0,0.,-1.), vecNormal, gray, lightPos);
+
+    // 3
+    //col = grayScale;
+    //col = grayScale + col*0.01;
+    //col = grayScale + col*0.3;
+
 #endif
 
-    //lightPos = vec3(0.0, 1.0, sin(iGlobalTime)* 9.1);
-    //float light = max(dot(lightPos, vecNormal), 0.0);
-    //col*=light;
+#if SET==3
+
+
+    vec3 oldCol = col;
+    col = 
+
+    col+=oldCol*0.7;
+
+#endif
 
     fragColor = vec4(col, 1.0);
 }
