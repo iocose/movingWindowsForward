@@ -32,7 +32,7 @@ public:
     ofxAutoReloadedShader shader;
     of3dPrimitive primitive;
 
-    float zoomLevel = 0.1;
+    float zoomLevel = 0.00;
     bool rotate = false;
     ofFbo fbo;
     ofTexture prev;

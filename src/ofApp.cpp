@@ -12,13 +12,13 @@ void ofApp::setup(){
     float size = 160;
     primitive.setScale(glm::vec3(size, size, size));
     primitive.rotateDeg(-90, glm::vec3(0,1,0));
-    primitive.setPosition(130, 40, 0);
+    primitive.setPosition(130, 40, -250);
 
 
     fbo.allocate(ofGetScreenWidth(), ofGetScreenHeight(), GL_RGBA, ofFbo::maxSamples());
     prev.allocate(ofGetScreenWidth(), ofGetScreenHeight(), GL_RGBA);
 
-    shader.load("shaders/vert.glsl", "shaders/roma.glsl", "");
+    shader.load("shaders/roma-vert.glsl", "shaders/roma.glsl", "");
     light.enable();
     
 }

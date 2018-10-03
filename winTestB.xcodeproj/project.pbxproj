@@ -74,7 +74,7 @@
 		6F08188021441F6D00042B03 /* tex-frag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "tex-frag.glsl"; sourceTree = "<group>"; };
 		6F77B458213F1AE9003FB2C1 /* normals-frag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "normals-frag.glsl"; sourceTree = "<group>"; };
 		6F8E34D9213AEE2500AFE0D1 /* frag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = frag.glsl; sourceTree = "<group>"; };
-		6F8E34DB213AEE2500AFE0D1 /* vert.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vert.glsl; sourceTree = "<group>"; };
+		6FDC38272164C55000CB84B6 /* roma-vert.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "roma-vert.glsl"; sourceTree = "<group>"; };
 		6FFF2A222149726D00F9A701 /* vectorfields-frag.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "vectorfields-frag.glsl"; sourceTree = "<group>"; };
 		6FFF2A2321497B5B00F9A701 /* roma.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = roma.glsl; sourceTree = "<group>"; };
 		72324CF3B7939342357F87E3 /* glsl.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = glsl.cpp; path = ../../../addons/ofxGLSLMaterial/src/glsl.cpp; sourceTree = SOURCE_ROOT; };
@@ -234,8 +234,8 @@
 		6F8E34D8213AEE2500AFE0D1 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				6FDC38272164C55000CB84B6 /* roma-vert.glsl */,
 				6F8E34D9213AEE2500AFE0D1 /* frag.glsl */,
-				6F8E34DB213AEE2500AFE0D1 /* vert.glsl */,
 				6F77B458213F1AE9003FB2C1 /* normals-frag.glsl */,
 				6F08187B2143DCD500042B03 /* rgb-waves-frag.glsl */,
 				6F08188021441F6D00042B03 /* tex-frag.glsl */,

@@ -1,6 +1,6 @@
 #version 150
 
-#define SET 2
+#define SET 1
 //
 // GLSL textureless classic 3D noise "cnoise",
 // with an RSL-style periodic variant "pnoise".
@@ -225,16 +225,16 @@ void main(){
 #endif
 
 # if SET==2
-    float freq = 0.1;
-    float amp = 1.0;
-    float magNoise = 1.0;
-    float turbo = 2.5;
+    float freq = 0.0;
+    float amp = 0.0;
+    float magNoise = 0.0;
+    float turbo = 0.1;
 //    freq = 0.1;
 //    amp = 10.1;
 //    magNoise = 2.0;
 //    turbo = 22.0;
-
-// zoom in
+//    freq = 3.10;
+// zoom in, open frag shader
 
 
     float noise = magNoise *  -.1 * turbulence( 22.5 * normal.xyz + iGlobalTime );

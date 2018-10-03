@@ -3,7 +3,7 @@
 #include "ofWindow.h"
 
 const int N_WINDOWS = 30;
-bool debug = true;
+bool debug = false;
 
 int main( ){
     // main window, where the 3d scene is drawn

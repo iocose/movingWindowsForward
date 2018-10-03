@@ -66,7 +66,7 @@ void main(){
     float r, g, b;
     vec3 lightPos = vec3(0.0, 1.0, 5.1);
     float offset = 0.4;
-    float t = iGlobalTime * 0.5; // 4. set 1
+    float t = iGlobalTime * 0.1; // 4. set 1
     vec3 col = vec3(0);
     vPos = vecPos.xyz;
     vec2 st = gl_FragCoord.xy / iResolution.xy;
@@ -74,18 +74,23 @@ void main(){
 
 // rgb waves
 #if SET==1
-    float width = 118.6;
+    float width = 3.6;
     float s1 = 0.8;
     float s2 = 0.9;
 
-    // zoom palmo
+    // zoom, press z
+    // increase red
+    // add g and b channel
     // s1 = 0.3;
     // s2 = 0.6;
-    // width = 3.;
     // t = iGlobalTime * 0.3;
+    // offset = 0.1 + 0.05 * sin(iGlobalTime);
     // offset = 0.2 + 0.7 * sin(iGlobalTime);
     // width = 118.;
-    // zoom out
+    // zoom out, x
+    // width = 0.1; junction to 2
+
+    offset = 0.2 + 0.79 * sin(iGlobalTime);
 
     r = mod(vPos.z * width + t, 1.0);
     r = smootha(s1,s2,r);
@@ -96,41 +101,61 @@ void main(){
     b = mod(vPos.z * width + t - offset, 1.0);
     b = smootha(s1,s2,b);
 
-    col = vec3(r, g, b);
+    col = vec3(r*0.1, 0., 0.);
+    //col = vec3(r*0.9, 0., 0.);
+    //col = vec3(r, 0., 0.);
+    //col = vec3(r, g, 0.);
 #endif
 
+// vector field
 #if SET==2
+    // decrease cell
+    // decrease plot
+    // add vector field on position
+    // add lights
+    // mix bn
+
     st = vectorField(st);
     // LAST
     st = vectorField(vPos.xy);
 
-    float cell = 0.99;
-    //cell = 0.28;
+    float cell = 0.93;
     vec2 modSt = mod(st, vec2(cell));
 
-    float x = plot(modSt.x, cell, 0.3);
-    float y = plot(modSt.y, cell, 0.2);
+    float x = plot(modSt.x, cell, 0.6);
+    float y = plot(modSt.y, cell, 0.5);
 
-    col = vec3(0.8,0.0,0.0) * x;
-    col += vec3(0.,8.,.0) * y;
-    vec3 bgCol = vec3(0.,0.,1.);
+    cell = 0.28;
+    x = plot(modSt.x, cell, 0.4);
+    y = plot(modSt.y, cell, 0.3);
+
+    col = vec3(0.9,0.0,0.0) * x;
+    col += vec3(0.,9.,.0) * y;
+    vec3 bgCol = vec3(0.,0.,.9);
 
     col+= bgCol*vec3(smoothstep(0.01, .001,x+y));
 
     // Add lights
-
-    //2
-    //lightPos = vec3(0.0, 1.0, sin(iGlobalTime)* 2.1);
+    lightPos = vec3(0.0, 1.0, sin(iGlobalTime)* 2.1);
+    // 4
     //lightPos = vec3(sin(iGlobalTime), 1.0, cos(iGlobalTime));
 
-    // 1
-    //vec3 gray = vec3(0.2);
-    //vec3 grayScale = addLight(vPos, vec3(0.0,0.,-1.), vecNormal, gray, lightPos);
-
     // 3
+    vec3 gray = vec3(0.2);
+    gray = vec3(0.9);
+    vec3 grayScale = addLight(vPos, vec3(0.0,0.,-1.), vecNormal, gray, lightPos);
+
+    // 1
+    //col = mix(grayScale,col, 0.9);
+    //2
+    //col = mix(grayScale,col, 0.01);
+    //col = mix(grayScale,col, 0.1);
+
+    // after vertex displacement
     //col = grayScale;
-    //col = grayScale + col*0.01;
-    //col = grayScale + col*0.3;
+    //col = mix(grayScale, vec3(1.0), 0.1);
+    //col = mix(grayScale, vec3(1.0), 1.);
+    // zoom close
 
 #endif
 
