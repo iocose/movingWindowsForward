@@ -1,6 +1,6 @@
 #version 150
 
-#define SET 2
+#define SET 1
 in vec3 vecNormal;
 in vec4 vecPos;
 
@@ -78,7 +78,7 @@ void main(){
     float s1 = 0.8;
     float s2 = 0.9;
 
-    // zoom, press z
+    // zoom, press z once
     // increase red
     // add g and b channel
     // s1 = 0.3;
@@ -88,9 +88,8 @@ void main(){
     // offset = 0.2 + 0.7 * sin(iGlobalTime);
     // width = 118.;
     // zoom out, x
-    // width = 0.1; junction to 2
 
-    offset = 0.2 + 0.79 * sin(iGlobalTime);
+    // width = 0.1; junction to set 2
 
     r = mod(vPos.z * width + t, 1.0);
     r = smootha(s1,s2,r);
@@ -101,10 +100,11 @@ void main(){
     b = mod(vPos.z * width + t - offset, 1.0);
     b = smootha(s1,s2,b);
 
-    col = vec3(r*0.1, 0., 0.);
+    //col = vec3(r*0.1, 0., 0.);
     //col = vec3(r*0.9, 0., 0.);
     //col = vec3(r, 0., 0.);
     //col = vec3(r, g, 0.);
+    //col = vec3(r, g, b);
 #endif
 
 // vector field
@@ -116,18 +116,19 @@ void main(){
     // mix bn
 
     st = vectorField(st);
-    // LAST
-    st = vectorField(vPos.xy);
+    // 3
+    // st = vectorField(vPos.xy);
 
     float cell = 0.93;
+    // 1
+    // cell = 0.48;
     vec2 modSt = mod(st, vec2(cell));
 
     float x = plot(modSt.x, cell, 0.6);
     float y = plot(modSt.y, cell, 0.5);
-
-    cell = 0.28;
-    x = plot(modSt.x, cell, 0.4);
-    y = plot(modSt.y, cell, 0.3);
+    // 2
+    //x = plot(modSt.x, cell, 0.4);
+    //y = plot(modSt.y, cell, 0.3);
 
     col = vec3(0.9,0.0,0.0) * x;
     col += vec3(0.,9.,.0) * y;
@@ -140,14 +141,14 @@ void main(){
     // 4
     //lightPos = vec3(sin(iGlobalTime), 1.0, cos(iGlobalTime));
 
-    // 3
+    // 5
     vec3 gray = vec3(0.2);
     gray = vec3(0.9);
     vec3 grayScale = addLight(vPos, vec3(0.0,0.,-1.), vecNormal, gray, lightPos);
 
-    // 1
+    // 6
     //col = mix(grayScale,col, 0.9);
-    //2
+    // 7
     //col = mix(grayScale,col, 0.01);
     //col = mix(grayScale,col, 0.1);
 

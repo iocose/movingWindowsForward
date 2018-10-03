@@ -1,5 +1,6 @@
-bin/winTestBDebug
+bin/MovingWindowsForwardDebug
 bin/data/*.obj
+bin/data/*.mp3
 # Some general ignore patterns
 build/
 obj/
