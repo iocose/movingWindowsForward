@@ -20,7 +20,8 @@ void ofApp::setup(){
 
     shader.load("shaders/roma-vert.glsl", "shaders/roma.glsl", "");
     light.enable();
-    
+
+    ofSetEscapeQuitsApp(false);
 }
 
 //--------------------------------------------------------------
