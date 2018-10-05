@@ -3,16 +3,17 @@
 #include "ofWindow.h"
 
 const int N_WINDOWS = 30;
-bool debug = false;
+bool debug = true;
 
 int main( ){
     // main window, where the 3d scene is drawn
     ofGLFWWindowSettings settings;
-    settings.setSize(1400, 700);
+    settings.setSize(2100, 1000);
     settings.setGLVersion(3, 2);
+    //settings.windowMode = OF_FULLSCREEN;
 
     if(!debug){
-        settings.setPosition(ofVec2f(-1400,-700));
+        settings.setPosition(ofVec2f(-2100,-1000));
         settings.visible = false; // hide the main window
         settings.resizable = false;
         shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
@@ -34,8 +35,8 @@ int main( ){
             settings.setSize(ofRandom(winWidth-100,winWidth),
                              ofRandom(winHeight-100,winHeight));
 
-            auto x = ofRandom(0, 1400+winWidth);
-            auto y = ofRandom(0, 700);
+            auto x = ofRandom(0, 2100+winWidth);
+            auto y = ofRandom(0, 1000);
             auto windowFrame = ofCreateWindow(settings);
             auto windowApp = make_shared<ofWindow>(x,y, mainApp->getTexture(), 2.0);
 
