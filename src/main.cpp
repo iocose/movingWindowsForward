@@ -5,8 +5,8 @@
 const int N_WINDOWS = 30;
 int mainWidth = 2100;
 int mainHeight = 1000;
-int winWidth = 500;
-int winHeight = 380;
+int winWidth = 550;
+int winHeight = 400;
 bool debug = false;
 
 int main( ){
