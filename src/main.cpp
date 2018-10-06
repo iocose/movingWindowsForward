@@ -5,8 +5,8 @@
 const int N_WINDOWS = 30;
 int mainWidth = 2100;
 int mainHeight = 1000;
-int winWidth = 300;
-int winHeight = 200;
+int winWidth = 500;
+int winHeight = 380;
 bool debug = false;
 
 int main( ){
@@ -14,7 +14,6 @@ int main( ){
     ofGLFWWindowSettings settings;
     settings.setSize(mainWidth, mainHeight);
     settings.setGLVersion(3, 2);
-    //settings.windowMode = OF_FULLSCREEN;
 
     if(!debug){
         settings.setPosition(ofVec2f(-mainWidth,-mainHeight));
@@ -30,13 +29,9 @@ int main( ){
         settings.resizable = false;
         settings.visible = true;
 
-//        int winWidth = 700;
-//        int winHeight = 400;
-
         for (int i = 0; i< N_WINDOWS; i++) {
-            //settings.setSize(100, 200);
-            settings.setSize(ofRandom(winWidth-100,winWidth),
-                             ofRandom(winHeight-100,winHeight));
+            settings.setSize(ofRandom(winWidth-200,winWidth),
+                             ofRandom(winHeight-200,winHeight));
 
             auto x = ofRandom(0, mainWidth+winWidth);
             auto y = ofRandom(0, mainHeight);
