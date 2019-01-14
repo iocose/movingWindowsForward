@@ -240,7 +240,8 @@ void main(){
     float noise = magNoise *  -.1 * turbulence( 22.5 * normal.xyz + iGlobalTime );
 
 
-    float b = 1.0 * pnoise( 0.05 * position.xyz + vec3( freq * iGlobalTime ), vec3( amp ) );
+    float b = 1.0 * pnoise( 0.05 * position.xyz + vec3( freq * iGlobalTime ),
+        vec3( amp ) );
     float displacement = - noise + b;
 
     vec4 projPos = projectionMatrix * mv * (position+normal*displacement);
